@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: event-organiser-csv 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-15 19:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/admin.php:66 includes/admin.php:67 includes/admin.php:163
+#: includes/register.php:5 includes/register.php:6
+msgid "Import Events"
+msgstr ""
+
+#: includes/admin.php:140
+msgid "Import events from a CSV file"
+msgstr ""
+
+#: includes/admin.php:141
+msgid "Choose a .csv file to upload, then click Upload file and import."
+msgstr ""
+
+#: includes/admin.php:153
+msgid "Export Events int CSV"
+msgstr ""
+
+#: includes/admin.php:286 includes/admin.php:291 includes/admin.php:301
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: includes/admin.php:292
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+
+#: includes/admin.php:328
+msgid "Comma"
+msgstr ""
+
+#: includes/admin.php:329
+msgid "Tab"
+msgstr ""
+
+#: includes/admin.php:330
+msgid "Space"
+msgstr ""
+
+#: includes/admin.php:336
+msgid "First row is header"
+msgstr ""
+
+#: includes/admin.php:341
+msgid "You must have javascript enabled for the importer to work."
+msgstr ""
+
+#: includes/admin.php:353
+msgid "Import"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:106
+#: includes/class-eo-csv-export.php:106
+msgid "Title"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:108
+#: includes/class-eo-csv-export.php:108
+msgid "Start Date"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:109
+#: includes/class-eo-csv-export.php:109
+msgid "End Date"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:111
+#: includes/class-eo-csv-export.php:111
+msgid "Content"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:113
+#: includes/class-eo-csv-export.php:113
+msgid "Venue"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:114
+#: includes/class-eo-csv-export.php:114
+msgid "Category"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:115
+#: includes/class-eo-csv-export.php:115
+msgid "Tags"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:117
+#: includes/class-eo-csv-export.php:117
+msgid "Recurrence schedule"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:118
+#: includes/class-eo-csv-export.php:118
+msgid "Schedule meta"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:119
+#: includes/class-eo-csv-export.php:119
+msgid "Recurrence frequency"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:120
+#: includes/class-eo-csv-export.php:120
+msgid "Recurr until"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:121
+msgid "Include dates"
+msgstr ""
+
+#: includes/class-eo-csv-events-export.php:122
+msgid "Exclude dates"
+msgstr ""
