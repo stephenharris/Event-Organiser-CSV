@@ -37,11 +37,11 @@ define( 'EVENT_ORGANISER_CSV_DIR',    dirname( __FILE__ ) . '/' );
  * Default initialization for the plugin:
  */
 function eventorganisercsv_init() {
-	$locale = apply_filters( 'plugin_locale', get_locale(), 'eventorganisercsv' );
-	load_textdomain( 'eventorganisercsv', WP_LANG_DIR . '/eventorganisercsv/eventorganisercsv-' . $locale . '.mo' );
-	load_plugin_textdomain( 'eventorganisercsv', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+	load_plugin_textdomain( 'event-organiser-csv', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	
 	if( is_admin() ){
+		
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-csv-parser.php');
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-event-csv-parser.php');
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/admin.php');
@@ -53,8 +53,6 @@ function eventorganisercsv_init() {
 		wp_register_script( 'eo_csv_jquery_csv', EVENT_ORGANISER_CSV_URL . "assets/js/vendor/jquery-csv{$ext}.js", array( 'jquery' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_script( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/js/event_organiser_csv{$ext}.js", array( 'jquery', 'eo_csv_jquery_csv' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_style( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/css/event_organiser_csv{$ext}.css", array(),  EVENT_ORGANISER_CSV_VERSION );
-		
-		
 	}
 }
 add_action( 'init', 'eventorganisercsv_init' );
