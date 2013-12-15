@@ -14,6 +14,17 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 	}
 	
 	/**
+	 * An event tag column should contain a comma-delimited list of tag slugs
+	 *
+	 * @param string $value Comma-delimited list of tag slugs
+	 * @param array $item
+	 * @return array Array of tag slugs
+	 */
+	function parse_value_event_tag( $value, $item ){
+		return explode( ',', $value );
+	}
+	
+	/**
 	 * An start date column should be of the format:
 	 * * Y-m-d 			( for all-day events)
 	 * * Y-m-d H:i:s 	( for non-all-day events)
