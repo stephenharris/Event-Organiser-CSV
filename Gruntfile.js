@@ -93,20 +93,6 @@ grunt.initConfig( {
 		}		
 	},
 		
-	compress: {
-		main: {
-			options: {
-				mode: 'zip',
-				archive: './build/event_organiser_csv.<%= pkg.version %>.zip'
-			},
-			expand: true,
-			cwd: 'build/<%= pkg.version %>/',
-			src: ['**/*'],
-			dest: 'event_organiser_csv/'
-		}		
-	},
-	
-
 	wp_readme_to_markdown: {
 		convert:{
 			files: {
@@ -211,6 +197,16 @@ grunt.initConfig( {
 			compare: '==',
 		},
 	},
+	
+    wp_deploy: {
+    	deploy:{
+            options: {
+        		svn_user: 'stephenharris',
+        		plugin_slug: 'event-organiser-csv',
+        		build_dir: 'buid/event-organiser-csv/'
+            },
+    	}
+    },
 		
 });
 	
@@ -221,7 +217,7 @@ grunt.initConfig( {
 
 	grunt.registerTask( 'build', [ 'test', 'newer:uglify', 'newer:cssmin', 'newer:pot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy' ] );
 
-	grunt.registerTask( 'deploy', [ 'checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'compress' ] );
+	grunt.registerTask( 'deploy', [ 'checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy' ] );
 	
 	grunt.util.linefeed = '\n';
 };
