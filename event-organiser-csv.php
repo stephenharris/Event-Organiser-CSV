@@ -29,6 +29,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+/**
+ * The concept of this plug-in is based on http://wordpress.org/plugins/wordpress-importer/
+ * and code has been used from that to kick-start this plug-in.
+ */
+
 define( 'EVENT_ORGANISER_CSV_VERSION', '0.1.0.b-2' );
 define( 'EVENT_ORGANISER_CSV_URL',     plugin_dir_url( __FILE__ ) );
 define( 'EVENT_ORGANISER_CSV_DIR',    dirname( __FILE__ ) . '/' );

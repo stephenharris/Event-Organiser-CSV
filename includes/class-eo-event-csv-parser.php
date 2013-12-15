@@ -1,23 +1,27 @@
 <?php 
 
-# create new parseCSV object.
-//$csv = new  EO_CSV_Parser( file_get_contents( '_books.csv' ) );
-//$csv = new  EO_CSV_Parser( '_books.csv' );
-
 class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		
 	/**
-	 * Parses an event value. Maybe overridden by `parse_event_value_{key}`
-	 * E.g. `parse_event_value_post_title()` to parse the post title.
+	 * An event category column should contain a comma-delimited list of category slugs
+	 * 
+	 * @param string $value Comma-delimited list of category slugs
+	 * @param array $item
+	 * @return array Array of category slugs
 	 */
-	function parse_value( $value, $key, $item ){
-		return $value;
-	}
-	
 	function parse_value_event_category( $value, $item ){
 		return explode( ',', $value );
 	}
 	
+	/**
+	 * An start date column should be of the format:
+	 * * Y-m-d 			( for all-day events)
+	 * * Y-m-d H:i:s 	( for non-all-day events)
+	 *
+	 * @param string $value Formatted date/date-time
+	 * @param array $item
+	 * @return array Array of category slugs
+	 */
 	function parse_value_start( $value, &$item ){
 		
 		if( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ){
@@ -30,9 +34,15 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 			
 			return $this->parse_date_time( $value );
 		}
-		
 	}
 	
+	/**
+	 * An end date column should be of the format Y-m-d or Y-m-d H:i:s
+	 * 
+	 * @param string $value Formatted date/date-time
+	 * @param array $item
+	 * @return array Array of category slugs
+	 */
 	function parse_value_end( $value, $item ){
 		if( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ){
 			return $this->parse_date( $value );
@@ -41,6 +51,13 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		}
 	}
 	
+	/**
+	 * An schedule last date column should be of the format Y-m-d or Y-m-d H:i:s
+	 * 
+	 * @param string $value Formatted date/date-time
+	 * @param array $item
+	 * @return array Array of category slugs
+	 */
 	function parse_value_schedule_last( $value, $item ){
 		if( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ){
 			return $this->parse_date( $value );
@@ -49,6 +66,12 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		}
 	}
 	
+	/**
+	 * Parses a date object (assumed to be Y-m-d format).
+	 * 
+	 * @param string $value
+	 * @return boolean|DateTime False if date could not be interpreted or a DateTime object.
+	 */
 	function parse_date( $value ){
 		
 		if( !$value )
@@ -63,6 +86,12 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		return $value;
 	}
 	
+	/**
+	 * Parses a date object (assumed to be Y-m-d H:i:s format).
+	 *
+	 * @param string $value
+	 * @return boolean|DateTime False if date could not be interpreted or a DateTime object.
+	 */
 	function parse_date_time( $value ){
 	
 		//TODO handle timezone
@@ -78,15 +107,33 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		return $value;
 	}
 	
-	
+	/**
+	 * Include column should be a comma-delimited list of 'Y-m-d'
+	 * formatted dates.
+	 * @param string $value
+	 * @return array
+	 */
 	function parse_value_include( $value ){
 		return $this->parse_date_list( $value );
 	}
 	
+	/**
+	 * Exclude column should be a comma-delimited list of 'Y-m-d'
+	 * formatted dates.
+	 * @param string $value
+	 * @return array
+	 */
 	function parse_value_exclude( $value ){
 		return $this->parse_date_list( $value );
 	}
 	
+	/**
+	 * Parse a list of dates given as comma-delimited list of 'Y-m-d'
+	 * formatted dates.
+	 * 
+	 * @param string $value Comma-delimited list of dates
+	 * @return array An array of DateTime objects
+	 */
 	function parse_date_list( $value ){
 		if( !$value )
 			return array();
@@ -97,6 +144,23 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		return $dates;
 	}
 	
+	/**
+	 * Schedule meta column should be of the form
+	 * 
+	 * **Weekly recurrence**
+	 * Comma delimited list of days of of days given by their two-letter identifier. 
+	 * E.g: "MO,TU,FR". 
+	 * 
+	 * **Montly recurrence**
+	 * Either "BYDAY=" followed by  an integer (-1,1-4) and two-letter day identifier, 
+	 * e.g. "BYDAY=2TH" for 2nd Thursday of every month. 
+	 * 
+	 * Or "BYMONTHDAY=" followed an integer (1 - 31) indicating the date on which 
+	 * the even should repeat. E.g. "BYMONTHDATE=16" for every month on the 16th.
+	 *
+	 * @param string $value 
+	 * @return array
+	 */
 	function parse_value_schedule_meta( $value ){
 		$_value = explode( ',', $value );
 		if( count( $_value ) > 1 )

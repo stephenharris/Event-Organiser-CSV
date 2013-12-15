@@ -215,7 +215,7 @@ grunt.initConfig( {
 		
 	grunt.registerTask( 'test', [ 'jshint', 'checktextdomain' ] );
 
-	grunt.registerTask( 'build', [ 'test', 'newer:uglify', 'newer:cssmin', 'newer:pot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy' ] );
+	grunt.registerTask( 'build', [ 'test', 'newer:uglify', 'newer:cssmin', 'pot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy' ] );
 
 	grunt.registerTask( 'deploy', [ 'checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy' ] );
 	

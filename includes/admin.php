@@ -5,12 +5,6 @@
 //TODO Venue meta?
 //TODO Filters?
 
-/**
- * WordPress Importer class for managing the import process of a WXR file
- *
- * @package WordPress
- * @subpackage Importer
- */
 class EO_CSV_Import_Admin_Page{
 	
 	/**
@@ -59,7 +53,9 @@ class EO_CSV_Import_Admin_Page{
 		return self::$instances[$class];
 	}
 
-	
+	/**
+	 * Register admin page
+	 */
 	public function register_page(){
 		
 		add_management_page(
@@ -71,6 +67,9 @@ class EO_CSV_Import_Admin_Page{
 		);
 	}
 	
+	/**
+	 * Export action listener
+	 */
 	function maybe_export_csv(){
 		if( !empty( $_POST['action'] ) && 'eo-export-csv' == $_POST['action'] ){
 			check_admin_referer( 'eo-export-csv' );
@@ -78,17 +77,25 @@ class EO_CSV_Import_Admin_Page{
 		}
 	}
 	
+	/**
+	 * Enqueue scripts
+	 */
 	function enqueue_scripts(){
-			
 		wp_enqueue_script( 'eo_csv_admin' );
 		wp_enqueue_style( 'eo_csv_admin' );
 	}
 	
+	/**
+	 * Export CSV
+	 */
 	function export_csv(){
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-csv-events-export.php');
 		$csv = new EO_Export_Events_CSV();
 	}
 
+	/**
+	 * Render the admin page
+	 */
 	function render() {
 		$this->header();
 
@@ -136,14 +143,15 @@ class EO_CSV_Import_Admin_Page{
 	 * Display introductory text and file upload form
 	 */
 	function greet() {
+		
 		echo '<div class="narrow">';
+		
 		echo '<p>'.__( 'Import events from a CSV file', 'event-organiser-csv' ).'</p>';
 		echo '<p>'.__( 'Choose a .csv file to upload, then click Upload file and import.', 'event-organiser-csv' ).'</p>';
 		
 		wp_import_upload_form( 'tools.php?page=eo-csv-import&amp;step=1' );
 		
 		echo '</div>';
-		
 		
 		echo '<h2> Export Events </h2>';
 		
@@ -152,8 +160,6 @@ class EO_CSV_Import_Admin_Page{
 			wp_nonce_field( 'eo-export-csv' );
 			submit_button( __( 'Export Events int CSV', 'event-organiser-csv' ), 'button' );
 		echo '</form>';
-		
-		
 	}
 
 	// Display import page title
@@ -169,7 +175,7 @@ class EO_CSV_Import_Admin_Page{
 	}
 
 	/**
-	 *
+	 * Import events
 	 */
 	function import( $file, $args = array() ) {
 		
@@ -273,8 +279,7 @@ class EO_CSV_Import_Admin_Page{
 
 
 	/**
-	 * Handles the WXR upload and initial parsing of the file to prepare for
-	 * displaying author import options
+	 * Handle the upload and store the imported data
 	 *
 	 * @return bool False if error uploading or invalid file, true otherwise
 	 */
@@ -308,8 +313,7 @@ class EO_CSV_Import_Admin_Page{
 
 
 	/**
-	 * Display pre-import options, author importing/mapping and option to
-	 * fetch attachments
+	 * Display pre-import options (labelling columns etc).
 	 */
 	function import_options() {
 
@@ -356,6 +360,9 @@ class EO_CSV_Import_Admin_Page{
 		<?php 
 	}
 
+	/**
+	 * Display feedback on imported events
+	 */
 	function display_feedback(){
 				
 		if( $this->events ){
@@ -380,59 +387,22 @@ class EO_CSV_Import_Admin_Page{
 		}
 		
 		printf( '<p> %d events successfuly imported </p>', $this->events_imported );
-		
-		/*echo '<hr>';
-		echo '<h3>Debug</h3>';
-		echo '<p class="description">(To be removed)</p>';
-		echo '<pre>';
-		print_r( $this->events );
-		echo '</pre>';
-		echo '</hr>';*/
 	}
 	
+	/**
+	 * Display an error message
+	 * @param string $message
+	 */
 	function display_error( $message ){
 		printf( '<div class="error"><p>%s</p></div>', $message );
 	}
 
+	/**
+	 * Display a notice message
+	 * @param string $message
+	 */
 	function display_notice( $message ){
 		printf( '<div class="updated"><p>%s</p></div>', $message );
 	}
 
-
-	/**
-	 * Decide if the given meta key maps to information we will want to import
-	 *
-	 * @param string $key The meta key to check
-	 * @return string|bool The key if we do want to import, false if not
-	 */
-	function is_valid_meta_key( $key ) {
-		// skip attachment metadata since we'll regenerate it from scratch
-		// skip _edit_lock as not relevant for import
-		if ( in_array( $key, array( '_wp_attached_file', '_wp_attachment_metadata', '_edit_lock' ) ) )
-			return false;
-		return $key;
-	}
-
-	/**
-	 * Decide whether or not the importer is allowed to create users.
-	 * Default is true, can be filtered via import_allow_create_users
-	 *
-	 * @return bool True if creating users is allowed
-	 */
-	function allow_create_users() {
-		return apply_filters( 'import_allow_create_users', true );
-	}
-
-	/**
-	 * Added to http_request_timeout filter to force timeout at 60 seconds during import
-	 * @return int 60
-	 */
-	function bump_request_timeout() {
-		return 60;
-	}
-
-	// return the difference in length between two strings
-	function cmpr_strlen( $a, $b ) {
-		return strlen($b) - strlen($a);
-	}
 }
