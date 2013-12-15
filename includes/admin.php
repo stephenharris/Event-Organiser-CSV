@@ -63,8 +63,8 @@ class EO_CSV_Import_Admin_Page{
 	public function register_page(){
 		
 		add_management_page(
-			__( 'Import Events', 'eventorganisercsv' ),
-			__( 'Import Events', 'eventorganisercsv' ),
+			__( 'Import Events', 'event-organiser-csv' ),
+			__( 'Import Events', 'event-organiser-csv' ),
 			'manage_options',
 			'eo-csv-import',
 			array( $this, 'render' )
@@ -137,8 +137,8 @@ class EO_CSV_Import_Admin_Page{
 	 */
 	function greet() {
 		echo '<div class="narrow">';
-		echo '<p>'.__( 'Import events from a CSV file', 'eventorganisercsv' ).'</p>';
-		echo '<p>'.__( 'Choose a .csv file to upload, then click Upload file and import.', 'eventorganisercsv' ).'</p>';
+		echo '<p>'.__( 'Import events from a CSV file', 'event-organiser-csv' ).'</p>';
+		echo '<p>'.__( 'Choose a .csv file to upload, then click Upload file and import.', 'event-organiser-csv' ).'</p>';
 		
 		wp_import_upload_form( 'tools.php?page=eo-csv-import&amp;step=1' );
 		
@@ -150,7 +150,7 @@ class EO_CSV_Import_Admin_Page{
 		echo '<form action="' . admin_url( 'tools.php?page=eo-csv-import' ). '" method="post">';
 			echo '<input type="hidden" name="action" value="eo-export-csv" />';
 			wp_nonce_field( 'eo-export-csv' );
-			submit_button( __( 'Export Events int CSV', 'eventorganisercsv' ), 'button' );
+			submit_button( __( 'Export Events int CSV', 'event-organiser-csv' ), 'button' );
 		echo '</form>';
 		
 		
@@ -160,7 +160,7 @@ class EO_CSV_Import_Admin_Page{
 	function header() {
 		echo '<div class="wrap">';
 		screen_icon();
-		echo '<h2>' . __( 'Import Events', 'eventorganisercsv' ) . '</h2>';
+		echo '<h2>' . __( 'Import Events', 'event-organiser-csv' ) . '</h2>';
 	}
 	
 	// Close div.wrap
@@ -283,13 +283,13 @@ class EO_CSV_Import_Admin_Page{
 		$file = wp_import_handle_upload();
 
 		if ( isset( $file['error'] ) ) {
-			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'eventorganisercsv' ) . '</strong><br />';
+			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'event-organiser-csv' ) . '</strong><br />';
 			echo esc_html( $file['error'] ) . '</p>';
 			return false;
 			
 		} else if ( ! file_exists( $file['file'] ) ) {
-			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'eventorganisercsv' ) . '</strong><br />';
-			printf( __( 'The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem.', 'eventorganisercsv' ), esc_html( $file['file'] ) );
+			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'event-organiser-csv' ) . '</strong><br />';
+			printf( __( 'The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem.', 'event-organiser-csv' ), esc_html( $file['file'] ) );
 			echo '</p>';
 			return false;
 		}
@@ -298,7 +298,7 @@ class EO_CSV_Import_Admin_Page{
 		
 	
 		if ( !file_exists( $file['file'] ) ) {
-			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'eventorganisercsv' ) . '</strong><br />';
+			echo '<p><strong>' . __( 'Sorry, there has been an error.', 'event-organiser-csv' ) . '</strong><br />';
 			return false;
 		}
 		
@@ -325,20 +325,20 @@ class EO_CSV_Import_Admin_Page{
 			<?php wp_nonce_field( 'eo-import-csv' ); ?>
 			
 			<p>
-				<label><input type="radio" name="delimiter" value="comma" /><?php esc_html_e( 'Comma', 'eventorganisercsv' ); ?></label>
-				<label><input type="radio" name="delimiter" value="tab" /><?php esc_html_e( 'Tab', 'eventorganisercsv' ); ?></label>
-				<label><input type="radio" name="delimiter" value="space" /><?php esc_html_e( 'Space', 'eventorganisercsv' ); ?></label>
+				<label><input type="radio" name="delimiter" value="comma" /><?php esc_html_e( 'Comma', 'event-organiser-csv' ); ?></label>
+				<label><input type="radio" name="delimiter" value="tab" /><?php esc_html_e( 'Tab', 'event-organiser-csv' ); ?></label>
+				<label><input type="radio" name="delimiter" value="space" /><?php esc_html_e( 'Space', 'event-organiser-csv' ); ?></label>
 			</p>			
 			
 			<p>
 				<label>
 					<input type="checkbox" name="first_row_is_header" value="1" class="eo-first-row-is-header" />
-					<?php esc_html_e( 'First row is header', 'eventorganisercsv' ); ?>
+					<?php esc_html_e( 'First row is header', 'event-organiser-csv' ); ?>
 				</label>
 			</p>
 			
 			<div class="error hide-if-js below-h2" id="eo-csv-error">
-				<p><?php esc_html_e( 'You must have javascript enabled for the importer to work.', 'eventorganisercsv' ); ?></p>
+				<p><?php esc_html_e( 'You must have javascript enabled for the importer to work.', 'event-organiser-csv' ); ?></p>
 			</div>
 		
 			
@@ -350,7 +350,7 @@ class EO_CSV_Import_Admin_Page{
     			</table>
 			</div>
 			
-			<?php submit_button( __( 'Import', 'eventorganisercsv' ), 'button', 'submit', true, array( 'id' => 'eo-csv-submit')  ); ?>
+			<?php submit_button( __( 'Import', 'event-organiser-csv' ), 'button', 'submit', true, array( 'id' => 'eo-csv-submit')  ); ?>
 			
 		</form>
 		<?php 

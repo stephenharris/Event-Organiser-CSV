@@ -103,23 +103,23 @@ class EO_Export_Events_CSV extends EO_Export_CSV  {
 
 	function get_headers() {
 		$headers = array(
-			'post_title'=>__( 'Title', 'eventorganisercsv' ),
+			'post_title'=>__( 'Title', 'event-organiser-csv' ),
 				
-			'start' =>__( 'Start Date', 'eventorganisercsv' ),
-			'end'=>__( 'End Date', 'eventorganisercsv' ),
+			'start' =>__( 'Start Date', 'event-organiser-csv' ),
+			'end'=>__( 'End Date', 'event-organiser-csv' ),
 				
-			'post_content' => __( 'Content', 'eventorganisercsv' ),
+			'post_content' => __( 'Content', 'event-organiser-csv' ),
 				
-			'event-venue' => __( 'Venue', 'eventorganisercsv' ),
-			'event-category' =>__( 'Category', 'eventorganisercsv' ),
-			'event-tags' => __( 'Tags', 'eventorganisercsv' ),
+			'event-venue' => __( 'Venue', 'event-organiser-csv' ),
+			'event-category' =>__( 'Category', 'event-organiser-csv' ),
+			'event-tags' => __( 'Tags', 'event-organiser-csv' ),
 				
-			'schedule'=>__( 'Recurrence schedule', 'eventorganisercsv' ),
-			'schedule_meta'=>__( 'Schedule meta', 'eventorganisercsv' ),
-			'frequency'=>__( 'Recurrence frequency', 'eventorganisercsv' ),
-			'schedule_last'=>__( 'Recurr until', 'eventorganisercsv' ),
-			'include'=>__( 'Include dates', 'eventorganisercsv' ),
-			'exclude'=>__( 'Exclude dates', 'eventorganisercsv' ),
+			'schedule'=>__( 'Recurrence schedule', 'event-organiser-csv' ),
+			'schedule_meta'=>__( 'Schedule meta', 'event-organiser-csv' ),
+			'frequency'=>__( 'Recurrence frequency', 'event-organiser-csv' ),
+			'schedule_last'=>__( 'Recurr until', 'event-organiser-csv' ),
+			'include'=>__( 'Include dates', 'event-organiser-csv' ),
+			'exclude'=>__( 'Exclude dates', 'event-organiser-csv' ),
 		);
 
 		return apply_filters_ref_array( 'eventorganiser_export_events_headers', array( $headers, &$this ) );

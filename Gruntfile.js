@@ -124,7 +124,7 @@ grunt.initConfig( {
 
 	pot: {
 		options:{
-        	text_domain: 'eventorganisercsv',
+        	text_domain: 'event-organiser-csv',
 	        dest: 'languages/',
 			keywords: [
 				'__:1',
@@ -158,7 +158,7 @@ grunt.initConfig( {
 
 	checktextdomain: {
 		options:{
-			text_domain: 'eventorganisercsv',
+			text_domain: 'event-organiser-csv',
 			correct_domain: true,
 			keywords: [
 			'__:1,2d',
