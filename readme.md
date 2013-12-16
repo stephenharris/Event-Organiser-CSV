@@ -8,11 +8,15 @@
 **License:**           GPLv2 or later  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
-Import & export events into CSV format
+Import & export events from/to CSV format
 
 ## Description ##
 
+This plug-in allows to import events from a CSV file into Event Organiser. You can also export events from
+Event Organiser into a CSV file.
+
 Please note that this plug-in still in **beta**. I welcome feedback, issues and pull-requests.
+
 
 ### Aim ###
 To allow users to export / import events in CSV format between various calendar applications, and to do this flexiably 
@@ -22,7 +26,9 @@ between installations of Event Organiser while preserving data that is not supor
 **In the vein of flexibility columns do not have to be in any prescribed order:** you tell the plug-in which columns pertain to what (start date, end date etc)   
 after importing the file.
 
+
 ### How to use this plug-in ###
+
 Once installed, go to *Tools > Import Events*. Here you can export a CSV file or select a file to import one. To import an file:
  
 * Select browse and select the file, click "Upload file and import"
@@ -53,10 +59,15 @@ Current limitations apply. See the examples folder for an archetypal CSV file
 * All dates are read using DateTime. While various formats are supported, Y-m-d (e.g. 2013-12-31) formats are **strongly** recommended
 * Starts dates must be provided in Y-m-d (e.g. 2013-12-31) for all day events and also include a time-component (e.g. 2013-12-31 11:30pm) for non-all-day events. There is no 
 prescribed format for the time but 24-hour time is recommended. You do not need to specify seconds.
-* Categories must be given as comma-seperated lists
+* Include/exclude dates should be given as comma-seperated list of dates in Y-m-d format.
+* Categories and tags must be given as comma-seperated list of slugs
 * It does not support venue meta-data (yet)
 
+*Please note that in theory all dates (other than the start date) can be given in any format, however, to 
+ensure dates are interpreted correctly it is strongly recommended to give dates in Y-m-d format. The start 
+date must be in that format so that the importer can differentriate between all-day and non-all-day events.*
  
+
 ### Future Features ###
 
 * Support venue meta data
