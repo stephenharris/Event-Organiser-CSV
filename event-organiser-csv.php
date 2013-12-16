@@ -55,7 +55,7 @@ function eventorganisercsv_init() {
 		
 		$ext = (defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG) ? '' : '.min';
 		
-		wp_register_script( 'eo_csv_jquery_csv', EVENT_ORGANISER_CSV_URL . "assets/js/vendor/jquery-csv{$ext}.js", array( 'jquery' ),  EVENT_ORGANISER_CSV_VERSION );
+		wp_register_script( 'eo_csv_jquery_csv', EVENT_ORGANISER_CSV_URL . "assets/js/vendor/jquery-csv.js", array( 'jquery' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_script( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/js/event_organiser_csv{$ext}.js", array( 'jquery', 'eo_csv_jquery_csv' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_style( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/css/event_organiser_csv{$ext}.css", array(),  EVENT_ORGANISER_CSV_VERSION );
 		
