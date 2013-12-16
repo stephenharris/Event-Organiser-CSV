@@ -70,7 +70,7 @@ grunt.initConfig( {
 	},
 	
 	clean: {
-		main: ['build/<%= pkg.version %>']
+		main: ['build/event-organiser-csv']
 	},
 	
 	copy: {
@@ -89,7 +89,7 @@ grunt.initConfig( {
 				'!.gitignore',
 				'!.gitmodules'
 			],
-			dest: 'build/<%= pkg.version %>/'
+			dest: 'build/event-organiser-csv/'
 		}		
 	},
 		
