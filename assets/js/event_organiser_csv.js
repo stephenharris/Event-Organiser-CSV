@@ -1,7 +1,7 @@
 /*! Event Organiser CSV - v0.1.0
  * http://wp-event-organiser.com/
  * Copyright (c) 2013; * Licensed GPLv2+ */
-/*global $:false, jQuery:false, eo_csv_data:false, document:false, alert:false, console:false*/
+/*global $:false, jQuery:false, eo_csv:false, eo_csv_data:false, document:false, alert:false, console:false*/
 (function ($) {
 	$(document).ready(function(){
 		
@@ -116,33 +116,32 @@
 				tfoot += '<td>' + 
 						'<select class="eo-csv-col-map" name="column_map['+c+'][col]" style="width: 100%;" data-eo-csv-col="1">' +
 							'<option value="0"> Please select </option>' +
-							'<option value="post_title"> Title </option>' +
+							'<option value="post_title">'+eo_csv.locale.title+'</option>' +
 							
-							'<option value="start"> Start </option>' +
-							'<option value="end"> End </option>' +
-							'<option value="schedule_last"> Recur Until </option>' +
-							'<option value="schedule"> Recurrence Schedule </option>' +
-							'<option value="frequency"> Recurrence Frequency </option>' +
-							'<option value="schedule_meta"> Schedule Meta </option>' +
+							'<option value="start"> '+eo_csv.locale.start+' </option>' +
+							'<option value="end"> '+eo_csv.locale.end+' </option>' +
+							'<option value="schedule_last"> '+eo_csv.locale.recur_until+' </option>' +
+							'<option value="schedule">'+eo_csv.locale.recur_schedule+'</option>' +
+							'<option value="frequency">'+eo_csv.locale.recur_freq+'</option>' +
+							'<option value="schedule_meta">'+eo_csv.locale.schedule_meta+'</option>' +
 							
-							'<option value="post_content"> Content </option>' +
+							'<option value="post_content">'+eo_csv.locale.content+'</option>' +
 
-							'<option value="event-venue"> Venue </option>' +
+							'<option value="event-venue">'+eo_csv.locale.venue+'</option>' +
 							
-							'<option value="event-category"> Categories </option>' +
-							'<option value="event-tags"> Tags </option>' +
+							'<option value="event-category"> '+eo_csv.locale.categories+' </option>' +
+							'<option value="event-tags">'+eo_csv.locale.tags+'</option>' +
 							
-							'<option value="include"> Include dates </option>' +
-							'<option value="exclude"> Exclude dates </option>' +
+							'<option value="include">'+eo_csv.locale.include_dates+'</option>' +
+							'<option value="exclude">'+eo_csv.locale.exclude_dates+'</option>' +
 							
 							//'<option value="post_status"> Event Status </option>' +
-							'<option value="post_meta"> Post Meta </option>' +
+							'<option value="post_meta">'+eo_csv.locale.post_meta+'</option>' +
 						'</select>' +
 						'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
 					'</td>';
 			}
 			tfoot += '</tr>';
-			
 			
 			//Insert table
 			var $table = $('.eo-csv-table-wrap table');
