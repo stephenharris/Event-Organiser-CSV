@@ -225,8 +225,8 @@ class EO_CSV_Import_Admin_Page{
 			
 			//Import venue
 			if( !empty( $event['event-venue'] ) ){
-			
-				$found_venue = eo_get_venue_by( 'name', $event['event-venue'] );
+								
+				$found_venue = eo_get_venue_by( 'name', sanitize_term_field( 'name', $event['event-venue'], 0, 'event-venue', 'db' ) );
 			
 				if( $found_venue ){
 					$venue_id = (int) $found_venue->term_id;
