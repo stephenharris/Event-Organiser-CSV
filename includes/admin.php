@@ -273,6 +273,16 @@ class EO_CSV_Import_Admin_Page{
 				wp_set_object_terms( $event_id, $cats, 'event-category' );
 			}
 			
+			if( !empty( $event['meta'] ) ){
+				foreach( $event['meta'] as $meta_key => $value ){
+					if( !isset( $value ) || '' === $value ){
+						continue;
+					}
+					
+					update_post_meta( $event_id, $meta_key, $value );
+				}
+			}
+			
 		}
 		
 	}

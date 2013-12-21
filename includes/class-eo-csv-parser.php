@@ -161,7 +161,7 @@ class EO_CSV_Parser{
 						if( method_exists( $this, $method ) ){	
 							$item[ 'meta' ][ $key ] = $this->$method( $value, $item );
 						}else{
-							$item[ 'meta' ][ $key ] = $this->parse_value( $value, $key, $item );
+							$item[ 'meta' ][ $key ] = $this->parse_meta_value( $value, $key, $item );
 						}
 						
 					}else{
@@ -183,4 +183,7 @@ class EO_CSV_Parser{
 		return $value;
 	}
 
+	function parse_meta_value( $value, $key, $item ){
+		return $value;
+	}
 }
