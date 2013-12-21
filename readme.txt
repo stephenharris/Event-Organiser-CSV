@@ -4,7 +4,7 @@ Donate link:       http://wp-event-organiser.com/
 Tags: CSV, Event, import
 Requires at least: 3.5.1
 Tested up to:      3.8
-Stable tag:        0.1.0
+Stable tag:        0.1.1
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,10 @@ date must be in that format so that the importer can differentriate between all-
 
 
 == Changelog ==
+
+= 0.1.1 =
+* Added support for post meta
+* Fixed bug with importing Venues with "&" in the name
 
 = 0.1.0 =
 * First release
