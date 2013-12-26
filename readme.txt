@@ -93,7 +93,7 @@ date must be in that format so that the importer can differentriate between all-
 
 = 0.1.1 =
 * Added support for post meta
-* Fixed bug with importing Venues with "&" in the name
+* Fixed bugt with importing Venues with "&" in the name
 
 = 0.1.0 =
 * First release
