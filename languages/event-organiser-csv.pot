@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: event-organiser-csv 0.1.0\n"
+"Project-Id-Version: event-organiser-csv 0.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 23:20+0000\n"
+"POT-Creation-Date: 2014-01-01 21:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,38 +89,38 @@ msgstr ""
 msgid "Export Events int CSV"
 msgstr ""
 
-#: includes/admin.php:291 includes/admin.php:296 includes/admin.php:306
+#: includes/admin.php:301 includes/admin.php:306 includes/admin.php:316
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: includes/admin.php:297
+#: includes/admin.php:307
 #, php-format
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr ""
 
-#: includes/admin.php:332
+#: includes/admin.php:342
 msgid "Comma"
 msgstr ""
 
-#: includes/admin.php:333
+#: includes/admin.php:343
 msgid "Tab"
 msgstr ""
 
-#: includes/admin.php:334
+#: includes/admin.php:344
 msgid "Space"
 msgstr ""
 
-#: includes/admin.php:340
+#: includes/admin.php:350
 msgid "First row is header"
 msgstr ""
 
-#: includes/admin.php:345
+#: includes/admin.php:355
 msgid "You must have javascript enabled for the importer to work."
 msgstr ""
 
-#: includes/admin.php:357
+#: includes/admin.php:367
 msgid "Import"
 msgstr ""
 
