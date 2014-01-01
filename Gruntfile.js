@@ -87,7 +87,8 @@ grunt.initConfig( {
 				'!Gruntfile.js',
 				'!package.json',
 				'!.gitignore',
-				'!.gitmodules'
+				'!.gitmodules',
+				'!assets/images/src/**'
 			],
 			dest: 'build/event-organiser-csv/'
 		}		
