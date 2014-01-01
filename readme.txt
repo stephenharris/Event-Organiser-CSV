@@ -88,6 +88,10 @@ date must be in that format so that the importer can differentriate between all-
 
 == Screenshots ==
 
+1. At *Tools > Import Events* select a file to import.
+2. Select delimiter, and identify each column.
+3. After importing the events you'll be notified if the it was successful.
+
 
 == Changelog ==
 

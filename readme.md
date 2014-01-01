@@ -88,6 +88,16 @@ date must be in that format so that the importer can differentriate between all-
 
 ## Screenshots ##
 
+### 1. At *Tools > Import Events* select a file to import. ###
+![At *Tools > Import Events* select a file to import.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-1.png)
+
+### 2. Select delimiter, and identify each column. ###
+![Select delimiter, and identify each column.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-2.png)
+
+### 3. After importing the events you'll be notified if the it was successful. ###
+![After importing the events you'll be notified if the it was successful.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-3.png)
+
+
 
 ## Changelog ##
 
