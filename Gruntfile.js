@@ -204,7 +204,7 @@ grunt.initConfig( {
             options: {
         		svn_user: 'stephenharris',
         		plugin_slug: 'event-organiser-csv',
-        		build_dir: 'buid/event-organiser-csv/'
+        		build_dir: 'build/event-organiser-csv/'
             },
     	}
     },
