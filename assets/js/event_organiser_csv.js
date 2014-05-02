@@ -130,7 +130,7 @@
 							'<option value="event-venue">'+eo_csv.locale.venue+'</option>' +
 							
 							'<option value="event-category"> '+eo_csv.locale.categories+' </option>' +
-							'<option value="event-tags">'+eo_csv.locale.tags+'</option>' +
+							'<option value="event-tag">'+eo_csv.locale.tags+'</option>' +
 							
 							'<option value="include">'+eo_csv.locale.include_dates+'</option>' +
 							'<option value="exclude">'+eo_csv.locale.exclude_dates+'</option>' +

@@ -248,31 +248,35 @@ class EO_CSV_Import_Admin_Page{
 			}
 			
 			
-			//Import categories
-			if( !empty( $event['event-category'] ) ){
+			//Import categories/tags
+			$taxonomies = array( 'event-category', 'event-tag' );
+			foreach( $taxonomies as $taxonomy ){
+
+				if( !empty( $event[$taxonomy] ) ){
 				
-				$cats = array();
+					$terms = array();
 				
-				foreach( $event['event-category'] as $category_name ){
+					foreach( $event[$taxonomy] as $term_name ){
 			
-					$found_cat = get_term_by( 'name', $category_name, 'event-category' );
+						$term_name = trim( $term_name );
+						$found_term = get_term_by( 'name', $term_name, $taxonomy );
 			
-					if( $found_cat ){
-						$cats[] = (int) $found_cat->term_id;
+						if( $found_term ){
+							$terms[] = (int) $found_term->term_id;
 						
-					}elseif( !empty( $args['import_categories'] ) ){
-						$new_cat = wp_insert_term( $category_name, 'event-category', array() );
+						}elseif( !empty( $args['import_categories'] ) ){
+							$new_term = wp_insert_term( $term_name, $taxonomy, array() );
 			
-						if( !is_wp_error( $new_cat ) && !$new_cat ){
-							$cats[] = (int) $new_cat['term_id'];
+							if( !is_wp_error( $new_term ) && !$new_term ){
+								$terms[] = (int) $new_term['term_id'];
+							}
 						}
-						
 					}
-				}
 				
-				wp_set_object_terms( $event_id, $cats, 'event-category' );
+					wp_set_object_terms( $event_id, $terms, $taxonomy );
+				}
 			}
-			
+
 			if( !empty( $event['meta'] ) ){
 				foreach( $event['meta'] as $meta_key => $value ){
 					if( !isset( $value ) || '' === $value ){
