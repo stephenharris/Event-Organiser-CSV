@@ -185,6 +185,8 @@ class EO_CSV_Import_Admin_Page{
 	 */
 	function import( $file, $args = array() ) {
 		
+		$args = apply_filters( 'eventorganiser_csv_import_args', $args, $file );
+		
 		$map = array();
 		
 		foreach( $args['headers'] as $i => $header ){
