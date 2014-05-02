@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: event-organiser-csv 0.1.2\n"
+"Project-Id-Version: event-organiser-csv 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-01 21:57+0000\n"
+"POT-Creation-Date: 2014-05-02 11:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,54 +73,58 @@ msgstr ""
 msgid "Post Meta"
 msgstr ""
 
-#: includes/admin.php:62 includes/admin.php:63 includes/admin.php:169
-msgid "Import Events"
+#: includes/admin.php:62 includes/admin.php:63
+msgid "Import / Export Events"
 msgstr ""
 
-#: includes/admin.php:149
+#: includes/admin.php:155
 msgid "Import events from a CSV file"
 msgstr ""
 
-#: includes/admin.php:150
+#: includes/admin.php:156
 msgid "Choose a .csv file to upload, then click Upload file and import."
 msgstr ""
 
-#: includes/admin.php:161
+#: includes/admin.php:167
 msgid "Export Events int CSV"
 msgstr ""
 
-#: includes/admin.php:301 includes/admin.php:306 includes/admin.php:316
+#: includes/admin.php:175
+msgid "Import Events"
+msgstr ""
+
+#: includes/admin.php:313 includes/admin.php:318 includes/admin.php:328
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: includes/admin.php:307
+#: includes/admin.php:319
 #, php-format
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr ""
 
-#: includes/admin.php:342
+#: includes/admin.php:354
 msgid "Comma"
 msgstr ""
 
-#: includes/admin.php:343
+#: includes/admin.php:355
 msgid "Tab"
 msgstr ""
 
-#: includes/admin.php:344
+#: includes/admin.php:356
 msgid "Space"
 msgstr ""
 
-#: includes/admin.php:350
+#: includes/admin.php:362
 msgid "First row is header"
 msgstr ""
 
-#: includes/admin.php:355
+#: includes/admin.php:367
 msgid "You must have javascript enabled for the importer to work."
 msgstr ""
 
-#: includes/admin.php:367
+#: includes/admin.php:379
 msgid "Import"
 msgstr ""
 
