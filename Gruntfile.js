@@ -96,6 +96,9 @@ grunt.initConfig( {
 		
 	wp_readme_to_markdown: {
 		convert:{
+			options:{
+				screenshot_url: 'http://ps.w.org/event-organiser-csv/assets/{screenshot}.png',
+			},
 			files: {
 				'readme.md': 'readme.txt'
 			},
