@@ -126,10 +126,16 @@ class EO_CSV_Import_Admin_Page{
 				$headers = $_POST['column_map'];
 				$delimiter = $_POST['delimiter'];
 				$first_row_is_header = !empty( $_POST['first_row_is_header'] );
-				$import_venues = (bool) !empty( $_POST['import_venues'] );
-				$import_categories = (bool) !empty( $_POST['import_categories'] );
+				
+				$args = array_merge(array(
+						'import_event-venue'    => (bool) !empty( $_POST['import_event-venue'] ),
+						'import_event-category' => (bool) !empty( $_POST['import_event-category'] ),
+						'import_event-tag'      => (bool) !empty( $_POST['import_event-tag'] )
+					),
+					compact( 'headers', 'delimiter', 'first_row_is_header', 'import_venues', 'import_categories' )
+				);
 						
-				$this->import( $file, compact( 'headers', 'delimiter', 'first_row_is_header', 'import_venues', 'import_categories' ) );
+				$this->import( $file, $args );
 				
 				$this->display_feedback();
 				break;
@@ -264,7 +270,7 @@ class EO_CSV_Import_Admin_Page{
 						if( $found_term ){
 							$terms[] = (int) $found_term->term_id;
 						
-						}elseif( !empty( $args['import_categories'] ) ){
+						}elseif( !empty( $args['import_'.$taxonomy] ) ){
 							$new_term = wp_insert_term( $term_name, $taxonomy, array() );
 			
 							if( !is_wp_error( $new_term ) && !$new_term ){
