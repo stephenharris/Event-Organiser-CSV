@@ -3,8 +3,8 @@
 **Donate link:**       http://wp-event-organiser.com/  
 **Tags:** CSV, Event, import  
 **Requires at least:** 3.5.1  
-**Tested up to:**      3.8  
-**Stable tag:**        0.1.2  
+**Tested up to:**      3.9  
+**Stable tag:**        0.1.3  
 **License:**           GPLv2 or later  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -52,6 +52,25 @@ selecting a different delimiter type (comma, tab, space) at the top.
   - Post Meta (an option will appear to provide the meta-key)
  * Click import.
  
+ 
+### Importing new venues, categories and tags ###
+
+By default the plug-in will only import venues, categories and tags that already exist. 
+To allow the plug-in to create new venues, categories and tags you can add the following
+code (to a seperate plug-in or your theme's `functions.php`).
+
+     function my_set_import_imports( $args, $file ){
+          $args['import_new_event-category'] =  true; //create category if it doesn't exist
+          $args['import_new_event-venue']    =  true; //create venue if it doesn't exist.
+          $args['import_new_event-tag']      =  true; //create tag if it doesn't exist. 
+     
+          return $args;
+     }
+     add_filter( 'eventorganiser_csv_import_args', 'my_set_import_imports', 10, 2 );
+
+Please note the limitations on importing venues discussed below. 
+
+
 
 ### Limitations ###
 Current limitations apply. See the examples folder for an archetypal CSV file 
@@ -60,7 +79,7 @@ Current limitations apply. See the examples folder for an archetypal CSV file
 * Starts dates must be provided in Y-m-d (e.g. 2013-12-31) for all day events and also include a time-component (e.g. 2013-12-31 11:30pm) for non-all-day events. There is no 
 prescribed format for the time but 24-hour time is recommended. You do not need to specify seconds.
 * Include/exclude dates should be given as comma-seperated list of dates in Y-m-d format.
-* Categories and tags must be given as comma-seperated list of slugs
+* Categories and tags must be given as comma-seperated list of names
 * It does not support venue meta-data (yet)
 
 *Please note that in theory all dates (other than the start date) can be given in any format, however, to 
@@ -89,17 +108,23 @@ date must be in that format so that the importer can differentriate between all-
 ## Screenshots ##
 
 ### 1. At *Tools > Import Events* select a file to import. ###
-![At *Tools > Import Events* select a file to import.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-1.png)
+![At *Tools > Import Events* select a file to import.](http://ps.w.org/event-organiser-csv/assets/screenshot-1.png)
 
 ### 2. Select delimiter, and identify each column. ###
-![Select delimiter, and identify each column.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-2.png)
+![Select delimiter, and identify each column.](http://ps.w.org/event-organiser-csv/assets/screenshot-2.png)
 
 ### 3. After importing the events you'll be notified if the it was successful. ###
-![After importing the events you'll be notified if the it was successful.](http://s.wordpress.org/extend/plugins/event-organiser-csv/screenshot-3.png)
+![After importing the events you'll be notified if the it was successful.](http://ps.w.org/event-organiser-csv/assets/screenshot-3.png)
 
 
 
 ## Changelog ##
+
+### 0.1.3 ###
+* Fixed bugs which meant event-tags wouldn't be exported.
+* Supports event-tag import (not just category/venue)
+* Added filter to toggle import arguments
+* Changed page/menu title to make it clearer that a CSV file can be exported there. 
 
 ### 0.1.2 ###
 * Fixed spelling errors in readme
