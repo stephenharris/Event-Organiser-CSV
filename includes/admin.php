@@ -242,7 +242,7 @@ class EO_CSV_Import_Admin_Page{
 				}elseif( !empty( $args['import_new_event-venue'] ) ){
 					$new_venue = eo_insert_venue( $event['event-venue'], $args );
 			
-					if( !is_wp_error( $new_venue ) && !$new_venue ){
+					if( !is_wp_error( $new_venue ) && $new_venue ){
 						$venue_id = (int) $new_venue['term_id'];
 					}
 					
@@ -275,7 +275,7 @@ class EO_CSV_Import_Admin_Page{
 						}elseif( !empty( $args['import_new_'.$taxonomy] ) ){
 							$new_term = wp_insert_term( $term_name, $taxonomy, array() );
 			
-							if( !is_wp_error( $new_term ) && !$new_term ){
+							if( !is_wp_error( $new_term ) && $new_term ){
 								$terms[] = (int) $new_term['term_id'];
 							}
 						}
