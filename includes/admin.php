@@ -59,8 +59,8 @@ class EO_CSV_Import_Admin_Page{
 	public function register_page(){
 		
 		add_management_page(
-			__( 'Import Events', 'event-organiser-csv' ),
-			__( 'Import Events', 'event-organiser-csv' ),
+			__( 'Import / Export Events', 'event-organiser-csv' ),
+			__( 'Import / Export Events', 'event-organiser-csv' ),
 			'manage_options',
 			'eo-csv-import',
 			array( $this, 'render' )
