@@ -112,7 +112,7 @@ class EO_Export_Events_CSV extends EO_Export_CSV  {
 				
 			'event-venue' => __( 'Venue', 'event-organiser-csv' ),
 			'event-category' =>__( 'Category', 'event-organiser-csv' ),
-			'event-tags' => __( 'Tags', 'event-organiser-csv' ),
+			'event-tag' => __( 'Tags', 'event-organiser-csv' ),
 				
 			'schedule'=>__( 'Recurrence schedule', 'event-organiser-csv' ),
 			'schedule_meta'=>__( 'Schedule meta', 'event-organiser-csv' ),
@@ -121,6 +121,13 @@ class EO_Export_Events_CSV extends EO_Export_CSV  {
 			'include'=>__( 'Include dates', 'event-organiser-csv' ),
 			'exclude'=>__( 'Exclude dates', 'event-organiser-csv' ),
 		);
+		
+		$taxonomies = array( 'event-venue', 'event-tag', 'event-category' );
+		foreach( $taxonomies as $taxonomy ){
+			if( !taxonomy_exists( $taxonomy ) ){
+				unset( $headers[$taxonomy] );
+			}	
+		}
 
 		return apply_filters_ref_array( 'eventorganiser_export_events_headers', array( $headers, &$this ) );
 	}
