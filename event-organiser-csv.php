@@ -58,25 +58,27 @@ function eventorganisercsv_init() {
 		wp_register_script( 'eo_csv_jquery_csv', EVENT_ORGANISER_CSV_URL . "assets/js/vendor/jquery-csv.js", array( 'jquery' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_script( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/js/event_organiser_csv{$ext}.js", array( 'jquery', 'eo_csv_jquery_csv' ),  EVENT_ORGANISER_CSV_VERSION );
 		wp_register_style( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/css/event_organiser_csv{$ext}.css", array(),  EVENT_ORGANISER_CSV_VERSION );
+
+		
+		$columns = 	apply_filters( 'eventorganiesr_csv_import_columns', array(
+			'post_title'     => __( 'Title', 'event-organiser-csv' ),
+			'start'          => __( 'Start', 'event-organiser-csv' ),
+			'end'            => __( 'End', 'event-organiser-csv' ),
+			'schedule_last'  => __( 'Recur until', 'event-organiser-csv' ),
+			'schedule'       => __( 'Recurrence schedule', 'event-organiser-csv' ),
+			'frequency'      => __( 'Recurrence frequency', 'event-organiser-csv' ),
+			'schedule_meta'  => __( 'Schedule meta', 'event-organiser-csv' ),
+			'post_content'   => __( 'Content', 'event-organiser-csv' ),
+			'event-venue'    => __( 'Venue', 'event-organiser-csv' ),
+			'event-category' => __( 'Tags', 'event-organiser-csv' ),
+			'event-tag'      => __( 'Include dates', 'event-organiser-csv' ),
+			'include'        => __( 'Exclude dates', 'event-organiser-csv' ),
+			'exclude'        => __( 'Title', 'event-organiser-csv' ),
+			'post_meta'      => __( 'Post Meta', 'event-organiser-csv' ),
+		));
 		
 		wp_localize_script( 'eo_csv_admin', 'eo_csv', array(
-			'locale' => array(
-				'title' 			=> __( 'Title', 'event-organiser-csv' ),
-				'start' 			=> __( 'Start', 'event-organiser-csv' ),
-				'end' 				=> __( 'End', 'event-organiser-csv' ),
-				'recur_until' 		=> __( 'Recur until', 'event-organiser-csv' ),
-				'recur_schedule' 	=> __( 'Recurrence schedule', 'event-organiser-csv' ),
-				'recur_freq'	 	=> __( 'Recurrence frequency', 'event-organiser-csv' ),
-				'schedule_meta'		=> __( 'Schedule meta', 'event-organiser-csv' ),
-				'content' 			=> __( 'Content', 'event-organiser-csv' ),
-				'venue' 			=> __( 'Venue', 'event-organiser-csv' ),
-				'categories' 		=> __( 'Categories', 'event-organiser-csv' ),
-				'tags' 				=> __( 'Tags', 'event-organiser-csv' ),
-				'include_dates' 	=> __( 'Include dates', 'event-organiser-csv' ),
-				'exclude_dates' 	=> __( 'Exclude dates', 'event-organiser-csv' ),
-				'post_meta' 		=> __( 'Post Meta', 'event-organiser-csv' ),
-			)
-		
+			'columns' => $columns,		
 		));
 	}
 }

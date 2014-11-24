@@ -115,31 +115,17 @@
 			for( c = 0; c < header_size; c++ ){
 				tfoot += '<td>' + 
 						'<select class="eo-csv-col-map" name="column_map['+c+'][col]" style="width: 100%;" data-eo-csv-col="1">' +
-							'<option value="0"> Please select </option>' +
-							'<option value="post_title">'+eo_csv.locale.title+'</option>' +
-							
-							'<option value="start"> '+eo_csv.locale.start+' </option>' +
-							'<option value="end"> '+eo_csv.locale.end+' </option>' +
-							'<option value="schedule_last"> '+eo_csv.locale.recur_until+' </option>' +
-							'<option value="schedule">'+eo_csv.locale.recur_schedule+'</option>' +
-							'<option value="frequency">'+eo_csv.locale.recur_freq+'</option>' +
-							'<option value="schedule_meta">'+eo_csv.locale.schedule_meta+'</option>' +
-							
-							'<option value="post_content">'+eo_csv.locale.content+'</option>' +
-
-							'<option value="event-venue">'+eo_csv.locale.venue+'</option>' +
-							
-							'<option value="event-category"> '+eo_csv.locale.categories+' </option>' +
-							'<option value="event-tag">'+eo_csv.locale.tags+'</option>' +
-							
-							'<option value="include">'+eo_csv.locale.include_dates+'</option>' +
-							'<option value="exclude">'+eo_csv.locale.exclude_dates+'</option>' +
-							
-							//'<option value="post_status"> Event Status </option>' +
-							'<option value="post_meta">'+eo_csv.locale.post_meta+'</option>' +
-						'</select>' +
-						'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
-					'</td>';
+							'<option value="0"> Please select </option>';
+						
+				   			for ( var key in eo_csv.columns ) {
+				   				if( eo_csv.columns.hasOwnProperty( key ) ){
+				   					tfoot += '<option value="' + key + '">' + eo_csv.columns[key] + '</option>';
+				   				}
+				   			}
+				   	
+				   		tfoot += '</select>' +
+				   			'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
+				   			'</td>';
 			}
 			tfoot += '</tr>';
 			
