@@ -70,10 +70,10 @@ function eventorganisercsv_init() {
 			'schedule_meta'  => __( 'Schedule meta', 'event-organiser-csv' ),
 			'post_content'   => __( 'Content', 'event-organiser-csv' ),
 			'event-venue'    => __( 'Venue', 'event-organiser-csv' ),
-			'event-category' => __( 'Tags', 'event-organiser-csv' ),
-			'event-tag'      => __( 'Include dates', 'event-organiser-csv' ),
-			'include'        => __( 'Exclude dates', 'event-organiser-csv' ),
-			'exclude'        => __( 'Title', 'event-organiser-csv' ),
+			'event-category' => __( 'Category', 'event-organiser-csv' ),
+			'event-tag'      => __( 'Tags', 'event-organiser-csv' ),
+			'include'        => __( 'Include dates', 'event-organiser-csv' ),
+			'exclude'        => __( 'Exclude dates', 'event-organiser-csv' ),
 			'post_meta'      => __( 'Post Meta', 'event-organiser-csv' ),
 		));
 		
