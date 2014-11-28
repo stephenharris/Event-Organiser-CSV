@@ -60,7 +60,7 @@ function eventorganisercsv_init() {
 		wp_register_style( 'eo_csv_admin', EVENT_ORGANISER_CSV_URL . "assets/css/event_organiser_csv{$ext}.css", array(),  EVENT_ORGANISER_CSV_VERSION );
 
 		
-		$columns = 	apply_filters( 'eventorganiesr_csv_import_columns', array(
+		$columns = 	apply_filters( 'eventorganiser_csv_import_columns', array(
 			'post_title'     => __( 'Title', 'event-organiser-csv' ),
 			'start'          => __( 'Start', 'event-organiser-csv' ),
 			'end'            => __( 'End', 'event-organiser-csv' ),
