@@ -10,6 +10,7 @@ node_modules
 externs.js
 Makefile
 vendor
+!assets/vendor
 /.aws.json
 *.min.js
 *.min.css
