@@ -196,6 +196,8 @@ class EO_CSV_Import_Admin_Page{
 				$map[$header['col']] = $i;
 			}
 		}
+
+		$delim_map = array( 'comma' => ',', 'space' => " ", 'tab' => "\t", 'semicolon' => ";" );
 		
 		$delim_map = array( 'comma' => ',', 'space' => " ", 'tab' => "\t" );
 		
@@ -351,9 +353,10 @@ class EO_CSV_Import_Admin_Page{
 			<?php wp_nonce_field( 'eo-import-csv' ); ?>
 			
 			<p>
-				<label><input type="radio" name="delimiter" value="comma" /><?php esc_html_e( 'Comma', 'event-organiser-csv' ); ?></label>
-				<label><input type="radio" name="delimiter" value="tab" /><?php esc_html_e( 'Tab', 'event-organiser-csv' ); ?></label>
-				<label><input type="radio" name="delimiter" value="space" /><?php esc_html_e( 'Space', 'event-organiser-csv' ); ?></label>
+				<label><input type="radio" name="delimiter" value="comma"/>     <?php esc_html_e( 'Comma', 'event-organiser-csv' ); ?>     </label>
+				<label><input type="radio" name="delimiter" value="tab"/>       <?php esc_html_e( 'Tab', 'event-organiser-csv' ); ?>       </label>
+				<label><input type="radio" name="delimiter" value="space"/>     <?php esc_html_e( 'Space', 'event-organiser-csv' ); ?>     </label>
+				<label><input type="radio" name="delimiter" value="semicolon"/> <?php esc_html_e( 'Semicolon', 'event-organiser-csv' ); ?> </label>
 			</p>			
 			
 			<p>

@@ -46,6 +46,10 @@
 					delimiter = "\t";
 					break;
 				
+				case 'semicolon':
+					delimiter = ";";
+					break;
+					
 				default:
 					delimiter = ",";
 					break;
@@ -145,7 +149,7 @@
 		}else{
 		
 			//Try all delimiters and pick the first one without an error
-			var delimiters = [ " ", "\t", "," ];
+			var delimiters = [ " ", "\t", ",", ";" ];
 			for( var i = 0; i < delimiters.length; i++ ){
 				
 				var delimiter = delimiters[i];
