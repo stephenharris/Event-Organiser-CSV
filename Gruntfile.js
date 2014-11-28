@@ -59,13 +59,13 @@ grunt.initConfig( {
 				' * Licensed GPLv2+' +
 				' */\n'
 			,
-			minify: {
-				expand: true,
-				cwd: 'assets/css/',				
-				src: ['event_organiser_csv.css'],
-				dest: 'assets/css/',
-				ext: '.min.css'
-			}
+		},
+		minify: {
+			expand: true,
+			cwd: 'assets/css/',				
+			src: ['event_organiser_csv.css'],
+			dest: 'assets/css/',
+			ext: '.min.css'
 		},
 	},
 	
