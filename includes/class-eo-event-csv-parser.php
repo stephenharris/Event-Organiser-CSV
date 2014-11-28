@@ -3,6 +3,31 @@
 class EO_Event_CSV_Parser extends EO_CSV_Parser{
 		
 	/**
+	 * 
+	 * @param string $value The value in the cell
+	 * @param string $key   String identifier the row
+	 * @param array  $item  Array indexed by column identifier
+	 * @return The parsed value.
+	 */
+	function parse_value( $value, $key, &$item ){
+		
+		//Allow sub classes to override parsing of values
+		$method = 'parse_value_'. str_replace( '-', '_', $key );
+		if( method_exists( $this, $method ) ){
+			$value = $this->$method( $value, $item );
+		}
+		
+		$value = apply_filters( 'eventorganiser_csv_cell_value', $value, $key, $item );
+		
+		if( substr( $key, 0, 6 ) === "meta::" ){
+			$item['meta'][substr( $key, 6 )] = $value;
+		}else{
+			$item[$key] = $value;	
+		}
+		
+	}
+	
+	/**
 	 * An event category column should contain a comma-delimited list of category slugs
 	 * 
 	 * @param string $value Comma-delimited list of category slugs

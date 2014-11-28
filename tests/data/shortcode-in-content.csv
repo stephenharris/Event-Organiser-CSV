@@ -1,0 +1,2 @@
+Title,Start Date,End Date,Content,Venue,Category,Tags,Recurrence schedule,Schedule meta,Recurrence frequency,Recurr until,Include dates,Exclude dates,My custom data
+"[CSV Import] Event with shortcode","2013-11-05","2013-11-05","shortcode [hello attr=""value""]world[/hello] This event is a single all day event with a shortcode","Cargo","Sport",,"once",,,,,,"hello world"

@@ -47,6 +47,8 @@ function eventorganisercsv_init() {
 	
 	if( is_admin() ){
 		
+		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-csv.php');
+		
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-csv-parser.php');
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/class-eo-event-csv-parser.php');
 		require_once( EVENT_ORGANISER_CSV_DIR.'includes/admin.php');

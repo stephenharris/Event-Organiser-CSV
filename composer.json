@@ -1,0 +1,27 @@
+{
+    "name": "stephenharris/event-organiser-csv",
+    "description": "CSV Import/Export extension to Event Organiser for WordPress",
+    "keywords": ["events", "wordpress"],
+    "homepage": "http://wp-event-organiser.com",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Stephen Harris",
+            "email": "contact@stephenharris.info",
+            "homepage": "http://www.stephenharris.info"
+        }
+    ],
+    "support": {
+        "forum": "http://wp-event-organiser.com/forums"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ]
+}

@@ -212,12 +212,22 @@ grunt.initConfig( {
     	}
     },
 		
+	phpunit: {
+		classes: {
+			dir: 'tests/unit-tests'
+		},
+		options: {
+			bin: 'vendor/bin/phpunit',
+			bootstrap: 'tests/bootstrap.php',
+			colors: true
+		}
+	},
 });
 	
 	// Default task(s).
 	grunt.registerTask( 'default', ['jshint', 'uglify', 'cssmin' ] );
 		
-	grunt.registerTask( 'test', [ 'jshint', 'checktextdomain' ] );
+	grunt.registerTask( 'test', [ 'jshint', 'checktextdomain', 'phpunit' ] );
 
 	grunt.registerTask( 'build', [ 'test', 'newer:uglify', 'newer:cssmin', 'pot', 'newer:po2mo', 'wp_readme_to_markdown', 'clean', 'copy' ] );
 

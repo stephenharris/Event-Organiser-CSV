@@ -190,29 +190,34 @@ class EO_CSV_Import_Admin_Page{
 		$map = array();
 		
 		foreach( $args['headers'] as $i => $header ){
-			if( $header['col'] == 'post_meta' ){
-				$map['meta'][$header['other']] = $i;
-			}elseif( !empty( $header['col'] ) ){
-				$map[$header['col']] = $i;
+			if( $header['col'] ){
+				if( $header['col'] == 'post_meta' ){
+					$map[$i] = "meta::".$header['other'];
+				}else{
+					$map[$i] = $header['col'];
+				}
 			}
 		}
 
 		$delim_map = array( 'comma' => ',', 'space' => " ", 'tab' => "\t", 'semicolon' => ";" );
 		
-		$delim_map = array( 'comma' => ',', 'space' => " ", 'tab' => "\t" );
+		$csv = new EO_CSV();
+    	$csv->delimiter = isset( $delim_map[$args['delimiter']] ) ? $delim_map[$args['delimiter']] : ",";
+    	$csv->parse( $file );
+    	
+		$event_parser = new EO_Event_CSV_Parser();
+		$event_parser->first_row_is_header = empty( $args['first_row_is_header'] ) ? false : true;
+		$event_parser->delimiter = isset( $delim_map[$args['delimiter']] ) ? $delim_map[$args['delimiter']] : ","; 
+		$event_parser->set_column_map( $map );
 		
-		$csv = new EO_Event_CSV_Parser();
-		$csv->first_row_is_header = empty( $args['first_row_is_header'] ) ? false : true;
-		$csv->delimiter = isset( $delim_map[$args['delimiter']] ) ? $delim_map[$args['delimiter']] : ","; 
-		$csv->set_map( $map );
+		$event_parser->map( $csv );
 		
-		$csv->parse( $file );
 		
 		$this->errors = new WP_Error();
 		$this->events = array();
 		$this->events_imported = 0;
 		
-		foreach( $csv->items as $event ){
+		foreach( $event_parser->items as $event ){
 			
 			$event_meta = isset( $event['meta'] ) ? $event['meta'] : false;
 			
