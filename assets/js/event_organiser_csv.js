@@ -121,15 +121,15 @@
 						'<select class="eo-csv-col-map" name="column_map['+c+'][col]" style="width: 100%;" data-eo-csv-col="1">' +
 							'<option value="0"> Please select </option>';
 						
-				   			for ( var key in eo_csv.columns ) {
-				   				if( eo_csv.columns.hasOwnProperty( key ) ){
-				   					tfoot += '<option value="' + key + '">' + eo_csv.columns[key] + '</option>';
-				   				}
-				   			}
-				   	
-				   		tfoot += '</select>' +
-				   			'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
-				   			'</td>';
+							for ( var key in eo_csv.columns ) {
+								if( eo_csv.columns.hasOwnProperty( key ) ){
+									tfoot += '<option value="' + key + '">' + eo_csv.columns[key] + '</option>';
+								}
+							}
+
+						tfoot += '</select>' +
+							'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
+							'</td>';
 			}
 			tfoot += '</tr>';
 			
