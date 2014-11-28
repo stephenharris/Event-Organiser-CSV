@@ -115,7 +115,7 @@
 			
 			
 			//Generate table footer
-			var tfoot = '<tr>';
+			var tfoot = '<tr class="eo-csv-import-column-selection">';
 			for( c = 0; c < header_size; c++ ){
 				tfoot += '<td>' + 
 						'<select class="eo-csv-col-map" name="column_map['+c+'][col]" style="width: 100%;" data-eo-csv-col="1">' +
@@ -136,9 +136,9 @@
 			//Insert table
 			var $table = $('.eo-csv-table-wrap table');
 			
-			$table.find('thead').html( thead );
+			$table.find('thead').html( tfoot +thead );
 			$table.find('tbody').html( tbody );
-			$table.find('tfoot').html( tfoot );
+			//$table.find('tfoot').html( tfoot );
 			
 		});//.eq(0).click();
 		

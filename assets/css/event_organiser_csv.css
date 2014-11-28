@@ -74,6 +74,7 @@
   border-right-width: 0; }
 
 .handsontable th,
+.handsontable .eo-csv-import-column-selection td,
 .handsontable .eo-csv-row-is-header td {
   background-color: #EEE;
   color: #222;
