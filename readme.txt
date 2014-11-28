@@ -3,8 +3,8 @@ Contributors:      stephenharris
 Donate link:       http://wp-event-organiser.com/
 Tags: CSV, Event, import
 Requires at least: 3.5.1
-Tested up to:      3.9
-Stable tag:        0.1.3
+Tested up to:      4.0.1
+Stable tag:        0.2.0
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,13 @@ date must be in that format so that the importer can differentriate between all-
 
 
 == Changelog ==
+
+= 0.2.0 =
+* Refactored CSV parsing routine
+* Adds `eventorganiser_csv_import_columns` filter to allow additional columns to be 'registered'
+* Adds `eventorganiser_csv_cell_value` filter to filter parsed value
+* Adds `eventorganiser_csv_event_inserted` action after event is inserted
+* Adds support for semicolon delimiters 
 
 = 0.1.3 =
 * Fixed bugs which meant event-tags wouldn't be exported.
