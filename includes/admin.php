@@ -297,6 +297,8 @@ class EO_CSV_Import_Admin_Page{
 				}
 			}
 			
+			do_action( 'eventorganiser_csv_event_inserted', $event_id, $event );
+			
 		}
 		
 	}
