@@ -81,6 +81,9 @@ grunt.initConfig( {
 				'!node_modules/**',
 				'!build/**',
 				'!.git/**',
+				'!tests/**',
+				'!vendor/**',
+				'assets/**',
 				'!*~',
 				'!*/**/readme.*',
 				'!*/**/README.*',
@@ -88,7 +91,11 @@ grunt.initConfig( {
 				'!package.json',
 				'!.gitignore',
 				'!.gitmodules',
-				'!assets/images/src/**'
+				'!assets/images/src/**',
+				'!composer.lock',
+				'!composer.phar',
+				'!composer.json',
+				'!CONTRIBUTING.md'
 			],
 			dest: 'build/event-organiser-csv/'
 		}		
