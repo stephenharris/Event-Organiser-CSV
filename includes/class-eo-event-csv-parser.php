@@ -197,10 +197,44 @@ class EO_Event_CSV_Parser extends EO_CSV_Parser{
 	 * @param string $value 
 	 * @return array
 	 */
-	function parse_value_schedule_meta( $value ){
-		$_value = explode( ',', $value );
-		if( count( $_value ) > 1 )
-			return $_value;
+	function parse_value_schedule_meta( $value, $item ){
+		
+		$schedule = 'unknown';
+		
+		if( isset( $item['schedule'] ) ){
+			$schedule = $item['schedule'];
+		}
+		
+		switch( strtolower( $schedule ) ){
+			case 'weekly':
+				$value = explode( ',', $value );
+				break;
+			
+			case 'monthly':
+				break;
+
+			//Don't require schedule meta
+			case 'once':
+			case 'custom':
+			case 'daily':
+			case 'yearly':
+				break;
+			
+			//Best guess
+			default:
+				$_value = explode( ',', $value );
+				
+				if( strpos( $schedule, 'BYDAY' ) !== false && strpos( $schedule, 'BYMONTHDAY' ) !==false ){
+					//Assume monthtly - do nothing
+				}elseif( count( $_value ) > 1 ){
+					//Assuming weekly
+					$value = $_value;
+				}elseif( preg_match( '/^[A-Za-z]{2}$/', $value ) ){
+					//Assuming weekly
+					$value = $_value;
+				}
+		}
+		
 		return $value;
 	}
 	
