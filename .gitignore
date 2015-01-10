@@ -18,7 +18,6 @@ vendor
 *-rtl.css
 *.mo
 *.pot
-readme.md
 languages/*.json
 images/src/ignore
 .pomoapi.json
