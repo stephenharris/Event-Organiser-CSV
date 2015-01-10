@@ -3,6 +3,7 @@
 .settings
 .buildpath
 .metadata
+*.
 build
 dist
 node_modules
@@ -21,3 +22,4 @@ readme.md
 languages/*.json
 images/src/ignore
 .pomoapi.json
+/.externalToolBuilders/org.eclipse.wst.jsdt.core.javascriptValidator.launch
