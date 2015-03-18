@@ -2,7 +2,7 @@
   "name": "event-organiser-csv",
   "title": "Event Organiser CSV",
   "description": "Import & export events from/to CSV format",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "http://wp-event-organiser.com/",
   "author": {
     "name": "Stephen Harris",
