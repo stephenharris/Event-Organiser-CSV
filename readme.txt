@@ -3,8 +3,8 @@ Contributors:      stephenharris
 Donate link:       http://wp-event-organiser.com/
 Tags: CSV, Event, import
 Requires at least: 3.5.1
-Tested up to:      4.1.0
-Stable tag:        0.3.0
+Tested up to:      4.1.1
+Stable tag:        0.3.1
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,9 @@ date must be in that format so that the importer can differentriate between all-
 
 
 == Changelog ==
+
+= 0.3.1 =
+* Fix bug with using term name for importing venues/categories as opposed to slug (as documented). 
 
 = 0.3.0 =
 * Fix bug with parsing schedule meta data of weekly events.
