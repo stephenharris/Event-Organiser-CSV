@@ -3,7 +3,7 @@
  * Plugin Name: Event Organiser CSV
  * Plugin URI:  http://wp-event-organiser.com/
  * Description: Import and Export events via CSV 
- * Version:     0.3.0
+ * Version:     0.3.1
  * Author:      Stephen Harris
  * Author URI:  http://stephenharris.info
  * License:     GPLv2+
@@ -34,7 +34,7 @@
  * and code has been used from that to kick-start this plug-in.
  */
 
-define( 'EVENT_ORGANISER_CSV_VERSION', '0.3.0' );
+define( 'EVENT_ORGANISER_CSV_VERSION', '0.3.1' );
 define( 'EVENT_ORGANISER_CSV_URL',     plugin_dir_url( __FILE__ ) );
 define( 'EVENT_ORGANISER_CSV_DIR',    dirname( __FILE__ ) . '/' );
 
