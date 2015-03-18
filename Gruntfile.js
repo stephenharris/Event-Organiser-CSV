@@ -70,7 +70,10 @@ grunt.initConfig( {
 	},
 	
 	clean: {
-		main: ['build/event-organiser-csv']
+		main: ['build/event-organiser-csv'],//Clean up build folder
+		css: [ 'css/*.min.css', 'css/*-rtl.css' ],
+		js: [ 'js/*.min.js' ],
+		i18n: [ 'languages/*.mo', 'languages/*.pot' ] 
 	},
 	
 	copy: {
@@ -95,7 +98,8 @@ grunt.initConfig( {
 				'!composer.lock',
 				'!composer.phar',
 				'!composer.json',
-				'!CONTRIBUTING.md'
+				'!CONTRIBUTING.md',
+				'!phpunit.xml'
 			],
 			dest: 'build/event-organiser-csv/'
 		}		
@@ -231,7 +235,7 @@ grunt.initConfig( {
 		
 	grunt.registerTask( 'test', [ 'jshint', 'checktextdomain', 'phpunit' ] );
 
-	grunt.registerTask( 'build', [ 'test', 'uglify', 'cssmin', 'pot', 'po2mo', 'wp_readme_to_markdown', 'clean', 'copy' ] );
+	grunt.registerTask( 'build', [ 'test', 'clean', 'uglify', 'cssmin', 'pot', 'po2mo', 'wp_readme_to_markdown', 'copy' ] );
 
 	grunt.registerTask( 'deploy', [ 'checkwpversion', 'checkbranch:master', 'checkrepo:deploy', 'build', 'wp_deploy' ] );
 	
