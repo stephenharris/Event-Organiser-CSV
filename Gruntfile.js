@@ -222,11 +222,6 @@ grunt.initConfig( {
 	phpunit: {
 		classes: {
 			dir: 'tests/unit-tests'
-		},
-		options: {
-			bin: 'vendor/bin/phpunit',
-			bootstrap: 'tests/bootstrap.php',
-			colors: true
 		}
 	},
 });
