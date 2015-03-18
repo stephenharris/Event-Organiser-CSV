@@ -241,7 +241,7 @@ class EO_CSV_Import_Admin_Page{
 			//Import venue
 			if( !empty( $event['event-venue'] ) ){
 								
-				$found_venue = eo_get_venue_by( 'name', sanitize_term_field( 'name', $event['event-venue'], 0, 'event-venue', 'db' ) );
+				$found_venue = eo_get_venue_by( 'slug', $event['event-venue'] );
 			
 				if( $found_venue ){
 					$venue_id = (int) $found_venue->term_id;
@@ -274,7 +274,7 @@ class EO_CSV_Import_Admin_Page{
 					foreach( $event[$taxonomy] as $term_name ){
 			
 						$term_name = trim( $term_name );
-						$found_term = get_term_by( 'name', $term_name, $taxonomy );
+						$found_term = get_term_by( 'slug', $term_name, $taxonomy );
 			
 						if( $found_term ){
 							$terms[] = (int) $found_term->term_id;
