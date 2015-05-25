@@ -23,10 +23,10 @@
 			
 			var selected = false;
 			$(".eo-csv-import-column-selection select").each(function(){
-				if( $(this).val() == "start" ){
+				if( $(this).val() === "start" ){
 					selected = true;
 				}
-			 });
+			});
 			 
 			if( !selected ){
 				eventorganisercsv.errorMessage( eo_csv.i18n.select_start_column );
@@ -35,7 +35,7 @@
 			}
 			
 			return true;
-		})
+		});
 		
 		
 		//Toggle visibility of first row
@@ -100,14 +100,12 @@
 			var $table = $('.eo-csv-table-wrap table');
 			var $tbody = $table.find('tbody').html( '' );
 			var $thead = $table.find('tbody').html( '' );
-			var $tfoot = $table.find('tfoot').html( '' );
-			
 			
 			//Generate table header
-			$action_row = $( '<tr class="eo-csv-import-column-selection">' );
-			$label_row = $('<tr></tr>' );
+			var $action_row = $( '<tr class="eo-csv-import-column-selection">' );
+			var $label_row = $('<tr></tr>' );
 			
-			for( c = 0; c < header_size; c++ ){
+			for( var c = 0; c < header_size; c++ ){
 				
 				var col_header = "";
 				var index = c;
@@ -142,9 +140,9 @@
 			
 			$thead.append( $action_row );
 			$thead.append( $label_row );
-			
-			
+
 			//Generate table body
+			var $row,$cell;
 			for( var r = 0; r < rows.length; r++ ){
 				$row = $('<tr class="eo-csv-row-'+r+'"></tr>' );
 				
@@ -155,9 +153,8 @@
 				}
 				$tbody.append($row);
 			}
-			
-			
-		});//.eq(0).click();
+						
+		});
 		
 		
 		if( !eo_csv_data.hasOwnProperty( 'input' ) || !eo_csv_data.input ){
