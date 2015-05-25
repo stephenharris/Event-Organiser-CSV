@@ -3,8 +3,8 @@
 **Donate link:**       http://wp-event-organiser.com/  
 **Tags:** CSV, Event, import  
 **Requires at least:** 3.5.1  
-**Tested up to:**      4.1.1  
-**Stable tag:**        0.3.1  
+**Tested up to:**      4.2.2  
+**Stable tag:**        0.3.2  
 **License:**           GPLv2 or later  
 **License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -120,6 +120,10 @@ date must be in that format so that the importer can differentriate between all-
 
 
 ## Changelog ##
+
+### 0.3.2 - 25th May 2015 ###
+* Fix bug with non-latin character sets & CSV preview
+* Adds error message and prevents processing of CSV file if a start date column hasn't been selected.
 
 ### 0.3.1 ###
 * Fix bug with using term name for importing venues/categories as opposed to slug (as documented). 
