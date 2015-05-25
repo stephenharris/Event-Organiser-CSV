@@ -382,7 +382,7 @@ class EO_CSV_Import_Admin_Page{
 			</div>
 		
 			
-			<div id="example" class="handsontable eo-csv-table-wrap">
+			<div class="handsontable eo-csv-table-wrap">
     			<table class="htCore">
         			<thead></thead>
         			<tbody></tbody>

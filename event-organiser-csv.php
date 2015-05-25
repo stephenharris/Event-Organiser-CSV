@@ -88,13 +88,14 @@ function eventorganisercsv_init() {
 			'exclude'        => __( 'Exclude dates', 'event-organiser-csv' ),
 			'post_meta'      => __( 'Post Meta', 'event-organiser-csv' ),
 		);
-		
-		
-		
-		$columns = 	apply_filters( 'eventorganiser_csv_import_columns', $columns );
-		
+
+		$columns = apply_filters( 'eventorganiser_csv_import_columns', $columns );
+
 		wp_localize_script( 'eo_csv_admin', 'eo_csv', array(
-			'columns' => $columns,		
+			'columns' => $columns,
+			'i18n'    => array(
+				'select_start_column' => __( 'You have not selected a start date column. Please use the dropdowns to identify each column.', 'event-organiser-csv' )
+			)
 		));
 	}
 }

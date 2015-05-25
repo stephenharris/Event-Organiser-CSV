@@ -19,6 +19,25 @@
 			$('#eo-csv-submit').removeAttr('disabled' ).show();
 		};
 		
+		$('#eo-csv-preview').on( 'submit', function(ev){
+			
+			var selected = false;
+			$(".eo-csv-import-column-selection select").each(function(){
+				if( $(this).val() == "start" ){
+					selected = true;
+				}
+			 });
+			 
+			if( !selected ){
+				eventorganisercsv.errorMessage( eo_csv.i18n.select_start_column );
+				ev.preventDefault();
+				return false;
+			}
+			
+			return true;
+		})
+		
+		
 		//Toggle visibility of first row
 		$('.eo-first-row-is-header').on( 'change', function(e){
 			//$('.eo-csv-row-0').toggle(  !$(this).is(":checked") );
@@ -27,6 +46,7 @@
 
 		//Toggle visibility of additional input for column map
 		$('.eo-csv-table-wrap').on( 'change', '.eo-csv-col-map', function(e){
+			eventorganisercsv.clearError();
 			var $input = $(this).parent('td').find('.eo-csv-col-map-meta');
 			$input.toggle( $(this).val() === 'post_meta' );
 			$input.attr( "placeholder", $(this).find('option:selected').text() );
