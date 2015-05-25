@@ -61,7 +61,7 @@ class EO_CSV_Parser{
 				foreach( $row as $c => $value ){
 					$key = isset( $this->column_map[$c] ) ? $this->column_map[$c] : false;
 					if( $key ){
-						$this->parse_value( $value, $key, $item );
+						$this->parse_value( utf8_encode( $value ), $key, $item );
 					}
 				}
 				
