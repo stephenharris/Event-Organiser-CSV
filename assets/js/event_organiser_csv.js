@@ -77,10 +77,17 @@
 			
 			var header_size = rows[0].length;
 			
+			var $table = $('.eo-csv-table-wrap table');
+			var $tbody = $table.find('tbody').html( '' );
+			var $thead = $table.find('tbody').html( '' );
+			var $tfoot = $table.find('tfoot').html( '' );
+			
 			
 			//Generate table header
-			var thead = '<tr>';
-			for( var c = 0; c < header_size; c++ ){
+			$action_row = $( '<tr class="eo-csv-import-column-selection">' );
+			$label_row = $('<tr></tr>' );
+			
+			for( c = 0; c < header_size; c++ ){
 				
 				var col_header = "";
 				var index = c;
@@ -95,50 +102,40 @@
 					}
 				}
 				
-				thead += '<th>' + col_header + '</th>';
-			}
-			thead += '</tr>';
-			
-			
-			//Generate table body
-			var tbody = '';
-			for( var r = 0; r < rows.length; r++ ){
-				tbody += '<tr class="eo-csv-row-'+r+'">';
-				
-				for( c = 0; c < header_size; c++ ){
-					var value = rows[r][c];
-					tbody += '<td><div class="eo-csv-cell-content">'+value+'</div></td>';
-				}
-				
-				tbody += '</tr>';
-			}
-			
-			
-			//Generate table footer
-			var tfoot = '<tr class="eo-csv-import-column-selection">';
-			for( c = 0; c < header_size; c++ ){
-				tfoot += '<td>' + 
+				var select = '<td>' + 
 						'<select class="eo-csv-col-map" name="column_map['+c+'][col]" style="width: 100%;" data-eo-csv-col="1">' +
 							'<option value="0"> Please select </option>';
 						
 							for ( var key in eo_csv.columns ) {
 								if( eo_csv.columns.hasOwnProperty( key ) ){
-									tfoot += '<option value="' + key + '">' + eo_csv.columns[key] + '</option>';
+									select += '<option value="' + key + '">' + eo_csv.columns[key] + '</option>';
 								}
 							}
-
-						tfoot += '</select>' +
+						select += '</select>' +
 							'<input type="text" name="column_map['+c+'][other]" style="display:none" value="" class="eo-csv-col-map-meta">' + 
 							'</td>';
+				
+				$action_row.append( $( select ) );
+				$label_row.append( $( '<th>' + col_header + '</th>' ) );
+				
 			}
-			tfoot += '</tr>';
 			
-			//Insert table
-			var $table = $('.eo-csv-table-wrap table');
+			$thead.append( $action_row );
+			$thead.append( $label_row );
 			
-			$table.find('thead').html( tfoot +thead );
-			$table.find('tbody').html( tbody );
-			//$table.find('tfoot').html( tfoot );
+			
+			//Generate table body
+			for( var r = 0; r < rows.length; r++ ){
+				$row = $('<tr class="eo-csv-row-'+r+'"></tr>' );
+				
+				for( c = 0; c < header_size; c++ ){
+					var value = rows[r][c];
+					$cell = $('<td><div class="eo-csv-cell-content"></div></td>').text( value );
+					$row.append($cell);
+				}
+				$tbody.append($row);
+			}
+			
 			
 		});//.eq(0).click();
 		
@@ -170,4 +167,5 @@
 		}	
 		
 	});
+	
 })(jQuery);

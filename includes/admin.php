@@ -348,13 +348,17 @@ class EO_CSV_Import_Admin_Page{
 	 */
 	function import_options() {
 
-		$input = html_entity_decode( (string) $this->import_data, ENT_QUOTES, 'UTF-8');
+		$input = utf8_encode( $this->import_data );
+		$output = 'var eo_csv_data = ' . json_encode( array( 'input' => $input ) ) . ';';
+		
+		echo "<script type='text/javascript'>\n"; // CDATA and type='text/javascript' is not needed for HTML 5
+		echo "/* <![CDATA[ */\n";
+		echo "$output\n";
+		echo "/* ]]> */\n";
+		echo "</script>\n";
 		?>
-		<script>
-		<?php echo "var eo_csv_data = " . json_encode( array( 'input' => $input ) ) . ';'; ?>
-		</script>
 
-		<form action="<?php echo admin_url( 'tools.php?page=eo-csv-import&amp;step=2' ); ?>" method="post">
+		<form id="eo-csv-preview" action="<?php echo admin_url( 'tools.php?page=eo-csv-import&amp;step=2' ); ?>" method="post">
 		
 			<input type="hidden" name="import_id" value="<?php echo $this->id; ?>" />
 			<?php wp_nonce_field( 'eo-import-csv' ); ?>
