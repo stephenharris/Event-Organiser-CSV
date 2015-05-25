@@ -1,36 +1,39 @@
 <?php
 /**
- * Starting the test 
+ * Starting the test
  */
-echo "Welcome to the Event Organiser CSV Test Suite" . PHP_EOL;
-echo "Version: 1.0" . PHP_EOL;
-echo "Authors: Stephen Harris" . PHP_EOL;
+echo 'Welcome to the Event Organiser CSV Test Suite' . PHP_EOL;
+echo 'Version: 1.0' . PHP_EOL;
+echo 'Authors: Stephen Harris' . PHP_EOL;
 
 //Defines the data location for unit-tests
 define( 'EO_CSV_DIR_TESTDATA', dirname( __FILE__ ) . '/data' );
 
-// Activates this plugin in WordPress so it can be tested.
-$GLOBALS['wp_tests_options'] = array(
-	'active_plugins' => array( 
-		'event-organiser/event-organiser.php', 
-		'event-organiser-csv/event-organiser-csv.php',
-	),
-);
-
-// If the develop repo location is defined (as WP_DEVELOP_DIR), use that
-// location. Otherwise, we'll just assume that this plugin is installed in a
-// WordPress developer repo under wp-content/plugins/
-if( false !== getenv( 'WP_DEVELOP_DIR' ) ) {
-	require getenv( 'WP_DEVELOP_DIR' ) . '/tests/phpunit/includes/bootstrap.php';
-} else {
-	require '../../../../tests/phpunit/includes/bootstrap.php';
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
+if ( ! $_tests_dir ) {
+	$_tests_dir = '/tmp/wordpress-tests-lib';
 }
+
+require_once $_tests_dir . '/includes/functions.php';
+
+function _manually_load_plugin() {
+
+	define( 'EVENT_ORGANISER_CSV_URL', 'http://example.org/wp-content/plugins/event-organiser-csv/' );
+	require dirname( __FILE__ ) . '/../../event-organiser/event-organiser.php';
+	require dirname( __FILE__ ) . '/../event-organiser-csv.php';
+}
+tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
+
+echo "Using WordPress test library at {$_tests_dir}" . PHP_EOL;
+
+require $_tests_dir . '/includes/bootstrap.php';
+
+activate_plugin( 'event-organiser/event-organiser.php' );
+activate_plugin( 'event-organiser-csv/event-organiser-csv.php' );
 
 // Install Event Organiser
 echo "Installing Event Organiser...\n";
 eventorganiser_install();
-
-echo "Installing Event Organiser CSV...\n";
 
 //Load our unit test class
 require dirname( __FILE__ ) . '/framework/testcase.php';
