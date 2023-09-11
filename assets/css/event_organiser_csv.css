@@ -125,3 +125,11 @@
 
 .handsontable::-webkit-resizer {
   background-color: #bbb; }
+
+
+input.eo-csv-col-map-meta {
+  display: block;
+  width: 100%;
+  padding: 0 0 0 11px;
+  margin: 0.1em;
+}

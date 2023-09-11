@@ -34,7 +34,7 @@
  * and code has been used from that to kick-start this plug-in.
  */
 
-define( 'EVENT_ORGANISER_CSV_VERSION', '0.3.2' );
+define( 'EVENT_ORGANISER_CSV_VERSION', '0.3.3' );
 define( 'EVENT_ORGANISER_CSV_URL',     plugin_dir_url( __FILE__ ) );
 define( 'EVENT_ORGANISER_CSV_DIR',    dirname( __FILE__ ) . '/' );
 
